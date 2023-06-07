@@ -22,8 +22,11 @@ def generate_line_chart(data, metrics1, metrics2, metrics3):
         else:
             print(f"Metric '{metric}' is not available in the data.")
 
-    fig.update_layout(title="Line Charts", xaxis_title='Date', yaxis_title='Count')
-    fig.show()
+    if fig.data:
+        fig.update_layout(title="Line Charts", xaxis_title='Date', yaxis_title='Count')
+        fig.show()
+    else:
+        print("No valid metrics selected.")
 
 
 def generate_pie_chart(data,widget_id,chart_title):
