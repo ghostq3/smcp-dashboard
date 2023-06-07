@@ -21,7 +21,9 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     # Create a separate line chart for each selected metric
     for metric in options:
         if metric in chart_data.columns:
-            fig = px.line(chart_data, x=chart_data.index, y=metric, title=metric)
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=chart_data.index, y=chart_data[metric], mode='lines', name=metric))
+            fig.update_layout(title=metric, xaxis_title='Date', yaxis_title=metric)
             fig.show()
         else:
             print(f"Metric '{metric}' is not available in the data.")
