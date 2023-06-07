@@ -11,19 +11,20 @@ def read_data(filename):
     df['Date'] = pd.to_datetime(df['Date'])  # Convert 'Date' column to datetime
     return df
 
-def generate_line_chart(data,metrics1="",metrics2="",metrics3=""):
-    """Generate Line chart."""
+def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
+    """Generate separate line charts for each selected metric using Plotly."""
     chart_data = data.set_index('Date')  # Set 'Date' column as index
 
     # Get user selection from multiselect checkbox
-    options = st.multiselect('Select Counts to Display', [metrics1, metrics2, metrics3], default=[metrics1, metrics2, metrics3])
+    options = [metrics1, metrics2, metrics3]
 
-    # Plot the line chart based on user selection
-    selected_columns = [option for option in options if option in chart_data.columns]
-    if selected_columns:
-        st.line_chart(chart_data[selected_columns])
-    else:
-        st.write("Please select at least one count to display.")
+    # Create a separate line chart for each selected metric
+    for metric in options:
+        if metric in chart_data.columns:
+            fig = px.line(chart_data, x=chart_data.index, y=metric, title=metric)
+            fig.show()
+        else:
+            print(f"Metric '{metric}' is not available in the data.")
 
 
 def generate_pie_chart(data,widget_id,chart_title):
