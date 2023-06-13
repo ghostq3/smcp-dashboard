@@ -17,25 +17,28 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     chart_data['Date'] = pd.to_datetime(chart_data['Date'])  # Convert 'Date' column to datetime
 
     # Set 'Date' column as index
-    chart_data.set_index(chart_data['Date'].dt.strftime('%b-%d'), inplace=True)
-    chart_data.drop('Date', axis=1, inplace=True)
+    chart_data.set_index(chart_data['Date'], inplace=True)
 
     # Sort the index in chronological order
     chart_data.sort_index(inplace=True)
 
+    # Format the date to month and day format
+    chart_data['Formatted_Date'] = chart_data['Date'].dt.strftime('%b-%d')
+
     # Plot the line charts
     if metrics1 in chart_data.columns:
-        st.line_chart(chart_data[metrics1].T)  # Transpose the DataFrame
+        st.line_chart(chart_data.set_index('Formatted_Date')[metrics1])
 
     if metrics2 in chart_data.columns:
-        st.line_chart(chart_data[metrics2].T)  # Transpose the DataFrame
+        st.line_chart(chart_data.set_index('Formatted_Date')[metrics2])
 
     if metrics3 in chart_data.columns:
-        st.line_chart(chart_data[metrics3].T)  # Transpose the DataFrame
+        st.line_chart(chart_data.set_index('Formatted_Date')[metrics3])
 
     # Add a message if no metrics were selected
     if not (metrics1 or metrics2 or metrics3):
         st.write("Please select at least one metric to display.")
+
 
 
 
