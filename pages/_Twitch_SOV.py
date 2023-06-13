@@ -13,30 +13,21 @@ def read_data(filename):
 
 def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     """Generate Line charts."""
-    chart_data = data.copy()
-    chart_data['Date'] = pd.to_datetime(chart_data['Date'])  # Convert 'Date' column to datetime
+    chart_data = data.set_index('Date')  # Set 'Date' column as index
 
-    # Sort the data by date
-    chart_data.sort_values(by='Date', inplace=True)
-
-    # Create the figure and add line traces
-    fig = go.Figure()
-
+    # Plot the line charts
     if metrics1 in chart_data.columns:
-        fig.add_trace(go.Scatter(x=chart_data['Date'], y=chart_data[metrics1], name=metrics1))
+        st.line_chart(chart_data[metrics1])
 
     if metrics2 in chart_data.columns:
-        fig.add_trace(go.Scatter(x=chart_data['Date'], y=chart_data[metrics2], name=metrics2))
+        st.line_chart(chart_data[metrics2])
 
     if metrics3 in chart_data.columns:
-        fig.add_trace(go.Scatter(x=chart_data['Date'], y=chart_data[metrics3], name=metrics3))
+        st.line_chart(chart_data[metrics3])
 
-    # Set the x-axis tick format to month and day
-    fig.update_layout(xaxis=dict(tickformat='%b-%d'))
-
-    # Show the plot
-    fig.show()
-
+    # Add a message if no metrics were selected
+    if not (metrics1 or metrics2 or metrics3):
+        st.write("Please select at least one metric to display.")
 
 
 def generate_pie_chart(data,widget_id,chart_title):
