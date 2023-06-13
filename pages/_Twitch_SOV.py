@@ -20,6 +20,9 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     chart_data.set_index(chart_data['Date'].dt.strftime('%b-%d'), inplace=True)
     chart_data.drop('Date', axis=1, inplace=True)
 
+    # Sort the index in chronological order
+    chart_data.sort_index(inplace=True)
+
     # Plot the line charts
     if metrics1 in chart_data.columns:
         st.line_chart(chart_data[metrics1].T)  # Transpose the DataFrame
@@ -33,6 +36,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     # Add a message if no metrics were selected
     if not (metrics1 or metrics2 or metrics3):
         st.write("Please select at least one metric to display.")
+
 
 
 
