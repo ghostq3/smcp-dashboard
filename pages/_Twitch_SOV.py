@@ -17,7 +17,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     chart_data['Date'] = pd.to_datetime(chart_data['Date'])  # Convert 'Date' column to datetime
 
     # Set 'Date' column as index
-    chart_data.set_index(chart_data['Date'].dt.strftime('%m-%d'), inplace=True)
+    chart_data.set_index(chart_data['Date'].dt.strftime('%b-%d'), inplace=True)
     chart_data.drop('Date', axis=1, inplace=True)
 
     # Plot the line charts
@@ -33,6 +33,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     # Add a message if no metrics were selected
     if not (metrics1 or metrics2 or metrics3):
         st.write("Please select at least one metric to display.")
+
 
 
 def generate_pie_chart(data,widget_id,chart_title):
