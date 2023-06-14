@@ -19,17 +19,14 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
 
     # Plot the line charts
     if metrics1 in chart_data.columns:
-        st.line_chart(chart_data[metrics1])
+        st.line_chart(data=chart_data,y=chart_data[metrics1])
 
     if metrics2 in chart_data.columns:
-        st.line_chart(chart_data[metrics2])
+        st.line_chart(data=chart_data,y=chart_data[metrics2])
 
     if metrics3 in chart_data.columns:
-        st.line_chart(chart_data[metrics3])
+        st.line_chart(data=chart_data,y=chart_data[metrics3])
 
-    # Add a message if no metrics were selected
-    if not (metrics1 or metrics2 or metrics3):
-        st.write("Please select at least one metric to display.")
 
 
 def generate_pie_chart(data, widget_id, chart_title):
