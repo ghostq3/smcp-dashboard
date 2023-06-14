@@ -30,7 +30,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
         st.write("Please select at least one metric to display.")
 
 
-def generate_pie_chart(data,widget_id,chart_title):
+def generate_pie_chart(data, widget_id, chart_title):
     """Generate Pie Chart."""
     options = ['View Count', 'Like Count', 'Comment Count']
     selected_options = st.multiselect(widget_id, options, default=options)
@@ -38,7 +38,14 @@ def generate_pie_chart(data,widget_id,chart_title):
     fig = go.Figure()
 
     for option in selected_options:
-        fig.add_trace(go.Pie(labels=data['Game'], values=data[option], name=option))
+        values = data[option]
+        labels = data['Game']
+
+        # Filter labels and values based on the condition
+        filtered_labels = [label if value > 1 else '' for label, value in zip(labels, values)]
+        filtered_values = [value if value > 1 else 0 for value in values]
+
+        fig.add_trace(go.Pie(labels=filtered_labels, values=filtered_values, name=option))
 
     fig.update_layout(title=chart_title)
 
