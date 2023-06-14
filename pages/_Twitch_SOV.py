@@ -32,7 +32,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
         st.write("Please select at least one metric to display.")
 
 
-def generate_pie_chart(data,widget_id,chart_title):
+def generate_pie_chart(data, widget_id, chart_title):
     """Generate Pie Chart."""
     options = ['Watch time (mins)', 'Stream time (mins)', 'Average viewers']
     selected_options = st.multiselect(widget_id, options, default=options)
@@ -40,7 +40,7 @@ def generate_pie_chart(data,widget_id,chart_title):
     fig = go.Figure()
 
     for option in selected_options:
-        fig.add_trace(go.Pie(labels=data['Game'], values=data[option], name=option))
+        fig.add_trace(go.Pie(labels=data['Game'], values=data[option], name=option, textinfo='label+percent', insidetextorientation='radial'))
 
     fig.update_layout(title=chart_title)
 
