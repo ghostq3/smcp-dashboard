@@ -14,18 +14,18 @@ def read_data(filename):
 def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     """Generate Line charts."""
     chart_data = data.copy()
-    chart_data['Date'] = pd.to_datetime(chart_data['Date'])  # Convert 'Date' column to datetime
-    chart_data.set_index(chart_data['Date'].dt.strftime('%m-%d'), inplace=True)  # Set 'Date' column as index in the month and day format
+    chart_data['Date'] = pd.to_datetime(chart_data['Date'])
+    chart_data['Date'] = chart_data['Date'].dt.strftime('%m-%d')
 
     # Plot the line charts
     if metrics1 in chart_data.columns:
-        st.line_chart(y=metrics1)
+        st.line_chart(data=chart_data,x='Date',y=metrics1)
 
     if metrics2 in chart_data.columns:
-        st.line_chart(y=metrics2)
+        st.line_chart(data=chart_data,x='Date',y=metrics2)
 
     if metrics3 in chart_data.columns:
-        st.line_chart(y=metrics3)
+        st.line_chart(data=chart_data,x='Date',y=metrics3)
 
 
 
