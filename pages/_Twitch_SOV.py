@@ -19,7 +19,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
 
     # Plot the line charts
     if metrics1 in chart_data.columns:
-        st.line_chart(chart_data[metrics1])
+        st.line_chart(chart_data,chart_data[metrics1],chart_data['Date'])
 
     if metrics2 in chart_data.columns:
         st.line_chart(chart_data[metrics2])
