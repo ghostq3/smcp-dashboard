@@ -15,7 +15,7 @@ def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     """Generate Line charts."""
     chart_data = data.copy()
     chart_data['Date'] = pd.to_datetime(chart_data['Date'])
-    chart_data['Date'] = chart_data['Date'].dt.strftime('%m-%d')
+    chart_data['Date'] = chart_data['Date'].dt.strftime('%b-%d')
 
     # Plot the line charts
     if metrics1 in chart_data.columns:
