@@ -30,7 +30,7 @@ def generate_line_chart(data,metrics1="",metrics2="",metrics3=""):
 def generate_pie_chart(data,widget_id,chart_title):
     """Generate Pie Chart."""
     options = ['Tweet', 'Retweet Count', 'Likes Count']
-    selected_options = st.multiselect(widget_id, options, default=options)
+    selected_options = st.multiselect(widget_id, options, default=options,textposition='inside')
 
     fig = go.Figure()
 

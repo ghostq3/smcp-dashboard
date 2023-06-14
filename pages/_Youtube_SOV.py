@@ -38,7 +38,7 @@ def generate_pie_chart(data,widget_id,chart_title):
     fig = go.Figure()
 
     for option in selected_options:
-        fig.add_trace(go.Pie(labels=data['Game'], values=data[option], name=option))
+        fig.add_trace(go.Pie(labels=data['Game'], values=data[option], name=option,textposition='inside'))
 
     fig.update_layout(title=chart_title)
 
