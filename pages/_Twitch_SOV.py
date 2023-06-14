@@ -13,24 +13,23 @@ def read_data(filename):
 
 def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     """Generate Line charts."""
-    # chart_data = data.copy()
-    # chart_data['Date'] = pd.to_datetime(chart_data['Date'])  # Convert 'Date' column to datetime
-    # chart_data.set_index(chart_data['Date'].dt.strftime('%m-%d'), inplace=True)  # Set 'Date' column as index in the month and day format
+    chart_data = data.copy()
+    chart_data['Date'] = pd.to_datetime(chart_data['Date'])  # Convert 'Date' column to datetime
+    chart_data.set_index(chart_data['Date'].dt.strftime('%m-%d'), inplace=True)  # Set 'Date' column as index in the month and day format
 
-    # # Plot the line charts
-    # if metrics1 in chart_data.columns:
-    #     st.line_chart(chart_data[metrics1])
+    # Plot the line charts
+    if metrics1 in chart_data.columns:
+        st.line_chart(chart_data[metrics1])
 
-    # if metrics2 in chart_data.columns:
-    #     st.line_chart(chart_data[metrics2])
+    if metrics2 in chart_data.columns:
+        st.line_chart(chart_data[metrics2])
 
-    # if metrics3 in chart_data.columns:
-    #     st.line_chart(chart_data[metrics3])
+    if metrics3 in chart_data.columns:
+        st.line_chart(chart_data[metrics3])
 
-    # # Add a message if no metrics were selected
-    # if not (metrics1 or metrics2 or metrics3):
-    #     st.write("Please select at least one metric to display.")
-    st.line_chart(data=data,x=data['Date'],y=metrics1)
+    # Add a message if no metrics were selected
+    if not (metrics1 or metrics2 or metrics3):
+        st.write("Please select at least one metric to display.")
 
 
 def generate_pie_chart(data, widget_id, chart_title):
