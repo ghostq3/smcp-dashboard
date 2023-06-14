@@ -13,21 +13,19 @@ def read_data(filename):
 
 def generate_line_chart(data, metrics1="", metrics2="", metrics3=""):
     """Generate Line charts."""
-    chart_data = data.set_index('Date')  # Set 'Date' column as index
+    chart_data = data.copy()
+    chart_data['Date'] = pd.to_datetime(chart_data['Date'])
+    chart_data['Date'] = chart_data['Date'].dt.strftime('%m-%d')
 
     # Plot the line charts
     if metrics1 in chart_data.columns:
-        st.line_chart(chart_data[metrics1])
+        st.line_chart(data=chart_data,x='Date',y=metrics1)
 
     if metrics2 in chart_data.columns:
-        st.line_chart(chart_data[metrics2])
+        st.line_chart(data=chart_data,x='Date',y=metrics2)
 
     if metrics3 in chart_data.columns:
-        st.line_chart(chart_data[metrics3])
-
-    # Add a message if no metrics were selected
-    if not (metrics1 or metrics2 or metrics3):
-        st.write("Please select at least one metric to display.")
+        st.line_chart(data=chart_data,x='Date',y=metrics3)
 
 
 def generate_pie_chart(data,widget_id,chart_title):
