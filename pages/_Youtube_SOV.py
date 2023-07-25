@@ -86,10 +86,10 @@ def main():
     generate_bar_chart(pie_df,' ')
 
     # Generate pie chart
-    pie_df2 = pd.read_csv('csvs/SOV - YT_axie_vs_field - Copy.csv')
+    # pie_df2 = pd.read_csv('csvs/SOV - YT_axie_vs_field - Copy.csv')
 
-    generate_pie_chart(pie_df2,'Select Metrics','Axie Infinity VS Field(With 3 Big Creators)')
-    generate_bar_chart(pie_df2,'     ')
+    # generate_pie_chart(pie_df2,'Select Metrics','Axie Infinity VS Field(With 3 Big Creators)')
+    # generate_bar_chart(pie_df2,'     ')
 
     # Generate pie chart for Ronin Games
     rgpie_df = pd.read_csv('csvs/SOV - YT_ronin_games.csv')
