@@ -81,7 +81,7 @@ def main():
     generate_line_chart(data,'Tweet','Likes Count','Retweet Count')
 
     st.subheader("Ronin Network Trend")
-    generate_line_chart(ronin_data,'Tweet','Likes Count','Retweet Count')
+    generate_line_chart(ronin_data,'Tweet ','Likes Count ','Retweet Count ')
 
     pie_df = pd.read_csv('csvs/SOV - Twitter_axie_vs_field.csv')
 
