@@ -62,6 +62,9 @@ def search_tweets(game):
     
     
     for tweet in tweets:
+        likes_count = tweet.favorite_count
+        if hasattr(tweet, 'retweeted_status'):
+            likes_count = tweet.retweeted_status.favorite_count
         data.append(
             [
                 tweet.created_at,
@@ -70,7 +73,7 @@ def search_tweets(game):
                 tweet.coordinates,
                 tweet.user,
                 tweet.retweet_count,
-                tweet.favorite_count,
+                likes_count,  # Likes count for tweet or retweet
                 tweet.lang,
             ]
         )
