@@ -72,9 +72,12 @@ def main():
     # Read CSV file
     filename = 'csvs/SOV - SoV_twitter.csv'
     data = read_data(filename)
-      # Read CSV file
+
     ronin_filename = 'csvs/SOV - SoV_Ronin.csv'
     ronin_data = read_data(ronin_filename)
+
+    cyber_filename = 'csvs/SOV - SoV_CyberKong.csv'
+    cyber_data = read_data(cyber_filename)
 
     # Generate line chart
     st.subheader("Axie Infinity Trend")
@@ -82,6 +85,9 @@ def main():
 
     st.subheader("Ronin Network Trend")
     generate_line_chart(ronin_data,'Tweet ','Likes Count ','Retweet Count ')
+
+    st.subheader("CyberKongz Trend")
+    generate_line_chart(cyber_data,'Tweet Count','Likes Count  ','Retweet Count  ')
 
     pie_df = pd.read_csv('csvs/SOV - Twitter_axie_vs_field.csv')
 
