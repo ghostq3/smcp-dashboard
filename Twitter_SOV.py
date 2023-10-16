@@ -96,7 +96,7 @@ def main():
 
     chains = pd.read_csv('csvs/SOV - Twitter_RVF - Copy.csv')
 
-    generate_pie_chart(chains,'Select AVF metrics','Ronin Network vs Other Chains')
+    generate_pie_chart(chains,'Select chain metrics','Ronin Network vs Other Chains')
     generate_bar_chart(chains,'      ')
 
     ronin_games_df = pd.read_csv('csvs/SOV - Twitter_ronin_games.csv')
