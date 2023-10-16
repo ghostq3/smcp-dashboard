@@ -94,6 +94,11 @@ def main():
     generate_pie_chart(pie_df,'Select AVF metrics','Axie Infinity vs Field')
     generate_bar_chart(pie_df,' ')
 
+    chains = pd.read_csv('csvs/SOV - Twitter_RVF - Copy.csv')
+
+    generate_pie_chart(chains,'Select AVF metrics','Ronin Network vs Other Chains')
+    generate_bar_chart(chains,'      ')
+
     ronin_games_df = pd.read_csv('csvs/SOV - Twitter_ronin_games.csv')
 
     generate_pie_chart(ronin_games_df,'Select Ronin Games metrics','Ronin Games VS Each Other')
