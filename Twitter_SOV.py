@@ -73,11 +73,11 @@ def main():
     filename = 'csvs/SOV - SoV_twitter.csv'
     data = read_data(filename)
 
-    ronin_filename = 'csvs/SOV - SoV_Ronin.csv'
-    ronin_data = read_data(ronin_filename)
+    # ronin_filename = 'csvs/SOV - SoV_Ronin.csv'
+    # ronin_data = read_data(ronin_filename)
 
-    cyber_filename = 'csvs/SOV - SoV_CyberKong.csv'
-    cyber_data = read_data(cyber_filename)
+    # cyber_filename = 'csvs/SOV - SoV_CyberKong.csv'
+    # cyber_data = read_data(cyber_filename)
 
     # Generate line chart
     st.subheader("Axie Infinity Trend")
