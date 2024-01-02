@@ -147,7 +147,8 @@ game_list = [
     'play_evio',
     'Spider Tanks',
     'League Kingdoms',
-    'Pixels Online'
+    'Pixels Online',
+    'Apeiron'
 ]
 
 for game in game_list:
